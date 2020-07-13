@@ -1,6 +1,6 @@
 ---
 title: "<center><img src= 'img/rainbow.png' width = '30%' alt='R-Ladies Logo'></br></center> "
-subtitle: "R-Ladies São Paulo <BR> Workshop de DataViz - Visualização de dados com R"
+subtitle: "R-Ladies São Paulo <BR> Visualização de dados com R"
 author: "Julho/2020"
 encoding: "UTF-8"
 output:
@@ -45,7 +45,7 @@ library(tidyverse)
 
 # Pré-requisitos
 
-## - `R` e `RStudio` instalados no seu notebook 
+## `R` e `RStudio` instalados no seu notebook 
 
 ```{r, echo=FALSE, out.width="40%"}
 knitr::include_graphics("img/rlogos/rstudio-r.jpg")
@@ -57,14 +57,16 @@ class:
 
 # Programação
 
--  
+-  ggplot2
 
--
+- visualizar para explorar
 
--
+- visualizar e comunicar
 
 ---
 class:   
+
+# Sobre as R-Ladies
 
 ## O que é o R-Ladies?
 
@@ -75,7 +77,7 @@ R-Ladies São Paulo integra, orgulhosamente, a organização R-Ladies Global, em
 
 Através de meetups e mentorias em um ambiente seguro e amigável.
 
-Nosso principal objetivo é promover a linguagem computacional estatística `R` compartilhando conhecimento, assim, quem tiver interesse na linguagem será bem-vinda, independente do nível de conhecimento. 
+Nosso principal objetivo é promover a linguagem computacional estatística `R` compartilhando conhecimento, assim, quem tiver interesse na linguagem será bem-vinde, independente do nível de conhecimento. 
 
 
 Fonte: [About us - R-Ladies](https://rladies.org/about-us/), [Meetup R-Ladies São Paulo](https://www.meetup.com/R-Ladies-Sao-Paulo/)
@@ -84,9 +86,11 @@ Fonte: [About us - R-Ladies](https://rladies.org/about-us/), [Meetup R-Ladies S�
 ---
 class:   
 
+# Sobre as R-Ladies
+
 ## Para quem?
 
-Nosso principal público-alvo são as pessoas que se identificam com o gênero feminino, portanto, mulheres cis, mulheres trans, bem como pessoas não-binárias e queer.
+Nosso público-alvo são pessoas consideradas minorias de gênero, portanto, mulheres cis ou trans, homens trans, bem como pessoas não-binárias e queer.
 
 ## Missão
 
@@ -96,6 +100,8 @@ Fonte: [About us - R-Ladies](https://rladies.org/about-us/), [Meetup R-Ladies S�
 
 ---
 class:    
+
+# Sobre as R-Ladies
 
 ## Como o R-Ladies começou?
 ```{r echo=FALSE, fig.align='center', out.width="20%"}
@@ -110,6 +116,8 @@ Fonte: [About us - R-Ladies](https://rladies.org/about-us/history/)
 ---
 class:    
 
+# Sobre as R-Ladies
+
 ## Crescimento da R-Ladies no mundo
 
 ```{r echo=FALSE, fig.align='center', out.width="100%"}
@@ -120,6 +128,8 @@ Atualizado em: Junho/2020. Fonte: [R Community Explorer](https://benubah.github.
 ---
 class: 
 
+# Sobre as R-Ladies
+
 ## Comunidade da R-Ladies - Capítulos no mundo
 ```{r echo=FALSE, out.width="100%"}
 knitr::include_graphics("img/r-ladies-community.PNG")
@@ -129,6 +139,8 @@ Atualizado em: Junho/2020. Fonte: [R Community Explorer](https://benubah.github.
 
 ---
 class:    
+
+# Sobre as R-Ladies
 
 ## Código de conduta
 O R-Ladies dedica-se a proporcionar uma experiência livre de assédio para todas as pessoas participantes, desta forma, não é tolerada nenhuma forma de assédio.
@@ -165,6 +177,217 @@ rladies %>%
 
 
 
+---
+class:
+
+# Vamos começar?
+
+- instalar R e RStudio
+- instalar o ggplot2 (e tidyverse)
+- explicar como o ggplo2 funciona
+- exemplos ggplo2
+---
+class:
+
+# Visualizar é explorar
+
+## Por que explorar os dados com visualização?
+
+O que essa tabela te diz?
+
+```{r echo=FALSE}
+dino <- read_csv('data/datasaurus.csv') %>% filter(dataset=='dino')
+star <- read_csv('data/datasaurus.csv') %>% filter(dataset=='star')
+
+read_csv('data/datasaurus.csv') %>% filter(dataset=='dino') %>%
+  select(-1) %>% DT::datatable(autoHideNavigation = TRUE,
+                options=list(pageLength = 5))
+```
+---
+class:
+
+# Visualizar é explorar
+
+## Por que explorar os dados com visualização?
+
+E agora?
+
+```{r echo=FALSE, fig.width=5, fig.height=5}
+dino %>% select(-1, ssauro=x, dino=y) %>% 
+  ggplot(aes(ssauro, dino)) + geom_point() + theme_minimal()
+```
+---
+class:
+
+# Visualizar é explorar
+
+## Por que explorar os dados com visualização?
+
+Que tal agora?
+
+```{r echo=FALSE, fig.width=5, fig.height=5}
+star %>% select(-1, trela=x, es=y) %>% 
+  ggplot(aes(trela, es)) + geom_point() + theme_minimal()
+```
+---
+class:
+
+# Visualizar é explorar
+
+## Por que explorar os dados com visualização?
+
+Ah, mas devem ser números beeeem diferentes...
+
+Será?
+
+```{r echo=FALSE}
+ds_summary <- function(.data) .data %>% summarytools::descr(stats=c('mean', 'med', 'sd')) %>%
+  as.data.frame() %>% mutate(stats=rownames(.)) %>% mutate_at(c('x', 'y'), round, digits=2)
+
+dino %>% ds_summary() %>%
+  left_join(star %>% ds_summary(), by="stats",
+            suffix=c('_dino', '_star')) %>% 
+  select(stats, starts_with('x'), everything()) %>% DT::datatable()
+```
+---
+class:
+
+# Visualizar é explorar
+
+## Características da visualização para exploração
+- Usada para entender melhor o conjunto de dados
+- Normalmente é feita em cima dos dados não agregados
+- Ajuda a entender conceitos estatísticos
+- Aparência e comunicação importam menos
+---
+class:
+
+# Visualizar é explorar
+
+## Explorando os dados
+Dataset: casas para alugar no Brasil a partir do QuintoAndar.
+```{r echo=FALSE}
+(rents <- read_csv('data/houses_to_rent.csv'))
+```
+
+Fonte: [https://www.kaggle.com/rubenssjr/brasilian-houses-to-rent](https://www.kaggle.com/rubenssjr/brasilian-houses-to-rent)
+---
+class:
+
+# Visualizar é explorar
+
+Que tal... uma distribuição dos preços de aluguel?
+
+```{r fig.width=10, fig.height=5}
+rents %>% ggplot(aes(rent)) + geom_histogram(bins=100) + theme_minimal()
+```
+
+Esse é um **histograma**.
+
+---
+class:
+
+# Visualizar é explorar
+
+Como tamanho do imóvel (área) e preço do aluguel se relacionam?
+
+```{r fig.width=8, fig.height=5}
+rents %>% ggplot(aes(area, rent)) + geom_point() 
+```
+
+---
+class:
+
+# Visualizar é explorar
+
+Pera... vamos tirar os outliers.
+
+```{r fig.width=8, fig.height=5, warning=TRUE}
+rents %>% ggplot(aes(area, rent)) + geom_point() + xlim(0, 2000) + ylim(0, 20000)
+```
+---
+class:
+
+# Visualizar é explorar
+
+Qual o padrão que vemos aqui?
+
+```{r fig.width=8, fig.height=5}
+rents %>% ggplot(aes(area, rent)) + geom_point() + xlim(0, 2000) + ylim(0, 20000) +
+  geom_smooth(method='lm')
+```
+---
+class:
+
+# Visualizar é explorar
+
+E a relação do alugel com o valor do condomínio?
+
+```{r fig.width=8, fig.height=5}
+rents %>% ggplot(aes(condo, rent)) + geom_point() +
+  scale_x_continuous(labels=function(x) format(x, scientific=F))
+```
+---
+class:
+
+# Visualizar é explorar
+
+Quê? Um condomínio que custa R$ 1.117.000 por mês?
+
+```{r fig.width=8, fig.height=5}
+rents %>% ggplot(aes(condo, rent)) + geom_point() + ylim(0, 10000) +
+  scale_x_continuous(labels=function(x) format(x, scientific=F), limits=c(900000, 1200000))
+```
+---
+class:
+
+# Visualizar é explorar
+
+Imagina falar que o valor médio dos condomínios é de <span style="color: red;">R$ 1.174</span>? O valor mediano, de <span style="color: blue;">R$ 560</span>, parece bem mais fiel à realidade, né?
+
+```{r fig.width=8, fig.height=4.5}
+rents %>% ggplot(aes(condo)) + xlim(0, 1500) + ylim(0, 1250) +
+  geom_histogram(bins=10) + geom_vline(xintercept=mean(rents$condo), color='red') +
+  geom_vline(xintercept=median(rents$condo), color='blue')
+```
+---
+class:
+
+# Visualizar é explorar
+
+Voltando à relação de aluguel com tamanho do imóvel, tem diferença se é mobiliado?
+
+```{r fig.width=8, fig.height=5}
+rents %>% ggplot(aes(area, rent, color=furniture)) + geom_point() +
+  xlim(0, 1000) + ylim(0, 15000)
+```
+---
+class:
+
+# Visualizar é explorar
+
+E a cidade, influencia no preço do aluguel?
+
+```{r fig.width=8, fig.height=5}
+rents %>% ggplot(aes(area, rent, color=city)) + geom_point() +
+  xlim(0, 1000) + ylim(0, 15000)
+```
+---
+class:
+
+# comunicação/visualização
+
+falar de codificação e boas práticas
+
+- cores
+- tamanhos
+- gráficos
+---
+class:
+
+# do's and dont's 
+
+- exemplos
 ---
 class:    
 
