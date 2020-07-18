@@ -57,11 +57,13 @@ class:
 
 # Programação
 
--  Apresentação do RStudio e pacote ggplot2.
+- Apresentação do RStudio 
 
-- visualizar para explorar
+- Intrudoução ao pacote ggplot2
 
-- visualizar e comunicar
+- Visualizar para explorar
+
+- Visualizar e comunicar
 
 ---
 class:   
