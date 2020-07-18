@@ -14,9 +14,9 @@
     <script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
     <link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
     <script src="libs/crosstalk/js/crosstalk.min.js"></script>
-    <link rel="stylesheet" href="css\metropolis.css" type="text/css" />
-    <link rel="stylesheet" href="css\metropolis-fonts.css" type="text/css" />
-    <link rel="stylesheet" href="css\footer.css" type="text/css" />
+    <link rel="stylesheet" href="css/metropolis.css" type="text/css" />
+    <link rel="stylesheet" href="css/metropolis-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/footer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 # <center>
 <img src= 'img/rainbow.png' width = '30%' alt='R-Ladies Logo'></br>
 </center>
-## R-Ladies São Paulo <BR> Workshop de DataViz - Visualização de dados com R
+## R-Ladies São Paulo <BR> Visualização de dados com R
 ### Julho/2020
 
 ---
@@ -51,7 +51,7 @@ class:
 
 # Pré-requisitos
 
-## - `R` e `RStudio` instalados no seu notebook 
+## `R` e `RStudio` instalados no seu notebook 
 
 &lt;img src="img/rlogos/rstudio-r.jpg" width="40%" style="display: block; margin: auto;" /&gt;
 
@@ -63,12 +63,14 @@ class:
 
 -  Apresentação do RStudio e pacote ggplot2.
 
--
+- visualizar para explorar
 
--
+- visualizar e comunicar
 
 ---
 class:   
+
+# Sobre as R-Ladies
 
 ## O que é o R-Ladies?
 
@@ -79,7 +81,7 @@ R-Ladies São Paulo integra, orgulhosamente, a organização R-Ladies Global, em
 
 Através de meetups e mentorias em um ambiente seguro e amigável.
 
-Nosso principal objetivo é promover a linguagem computacional estatística `R` compartilhando conhecimento, assim, quem tiver interesse na linguagem será bem-vinda, independente do nível de conhecimento. 
+Nosso principal objetivo é promover a linguagem computacional estatística `R` compartilhando conhecimento, assim, quem tiver interesse na linguagem será bem-vinde, independente do nível de conhecimento. 
 
 
 Fonte: [About us - R-Ladies](https://rladies.org/about-us/), [Meetup R-Ladies São Paulo](https://www.meetup.com/R-Ladies-Sao-Paulo/)
@@ -88,9 +90,11 @@ Fonte: [About us - R-Ladies](https://rladies.org/about-us/), [Meetup R-Ladies S�
 ---
 class:   
 
+# Sobre as R-Ladies
+
 ## Para quem?
 
-Nosso principal público-alvo são as pessoas que se identificam com o gênero feminino, portanto, mulheres cis, mulheres trans, bem como pessoas não-binárias e queer.
+Nosso público-alvo são pessoas consideradas minorias de gênero, portanto, mulheres cis ou trans, homens trans, bem como pessoas não-binárias e queer.
 
 ## Missão
 
@@ -100,6 +104,8 @@ Fonte: [About us - R-Ladies](https://rladies.org/about-us/), [Meetup R-Ladies S�
 
 ---
 class:    
+
+# Sobre as R-Ladies
 
 ## Como o R-Ladies começou?
 &lt;img src="https://raw.githubusercontent.com/beatrizmilz/IV-SER-RLadies/master/docs/img/gabriela.jpeg" width="20%" style="display: block; margin: auto;" /&gt;
@@ -112,6 +118,8 @@ Fonte: [About us - R-Ladies](https://rladies.org/about-us/history/)
 ---
 class:    
 
+# Sobre as R-Ladies
+
 ## Crescimento da R-Ladies no mundo
 
 &lt;img src="img/echarts.png" width="100%" style="display: block; margin: auto;" /&gt;
@@ -120,6 +128,8 @@ Atualizado em: Junho/2020. Fonte: [R Community Explorer](https://benubah.github.
 ---
 class: 
 
+# Sobre as R-Ladies
+
 ## Comunidade da R-Ladies - Capítulos no mundo
 &lt;img src="img/r-ladies-community.PNG" width="100%" style="display: block; margin: auto;" /&gt;
 
@@ -127,6 +137,8 @@ Atualizado em: Junho/2020. Fonte: [R Community Explorer](https://benubah.github.
 
 ---
 class:    
+
+# Sobre as R-Ladies
 
 ## Código de conduta
 O R-Ladies dedica-se a proporcionar uma experiência livre de assédio para todas as pessoas participantes, desta forma, não é tolerada nenhuma forma de assédio.
@@ -143,13 +155,209 @@ class:
 
 
 
-Atualizado em: julho de 2020. Fonte: [R Community Explorer](https://benubah.github.io/r-community-explorer/rladies.html) 
-
-<div id="htmlwidget-9c6f6cdb26412dfa3a07" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9c6f6cdb26412dfa3a07">{"x":{"filter":"none","autoHideNavigation":true,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"],["R-Ladies São Paulo","R-Ladies Belo Horizonte","R-Ladies Niterói","R-Ladies Rio de Janeiro","R-Ladies Floripa","R-Ladies Porto Alegre","R-Ladies Salvador","R-Ladies Recife","R-Ladies Goiânia","R-Ladies Vitória","R-Ladies Natal","R-Ladies Lavras","R-Ladies Ribeirão Preto","R-Ladies Manaus","R-Ladies Curitiba","R-Ladies Fortaleza"],[948,779,559,513,435,316,177,143,103,90,62,35,28,25,10,9],["Active","Active","Active","Active","Active","Inactive","Inactive","Inactive","Active","Active","Active","Active","Unbegun","Unbegun","Unbegun","Unbegun"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>name<\/th>\n      <th>members<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":7,"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[7,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 
 
+```r
+rents %&gt;% ggplot(aes(condo, rent)) + geom_point() + ylim(0, 10000) +
+  scale_x_continuous(labels=function(x) format(x, scientific=F), limits=c(900000, 1200000))
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
+---
+class:
+
+# Visualizar é explorar
+
+Imagina falar que o valor médio dos condomínios é de &lt;span style="color: red;"&gt;R$ 1.174&lt;/span&gt;?
+
+O valor mediano, de &lt;span style="color: blue;"&gt;R$ 560&lt;/span&gt;, parece bem mais fiel à realidade, né?
+
+
+```r
+rents %&gt;% ggplot(aes(condo)) + xlim(0, 1500) + ylim(0, 1250) +
+  geom_histogram(bins=10) + geom_vline(xintercept=mean(rents$condo), color='red') +
+  geom_vline(xintercept=median(rents$condo), color='blue')
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+---
+class:
+
+# Visualizar é comunicar
+
+## E para comunicação?
+
+O que uma pessoa leiga concluiria desse gráfico?
+
+&lt;img src="index_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+---
+class:
+
+# Visualizar é comunicar
+
+## E agora?
+
+Concluir pela pessoa. / facilitar a conclusao
+
+&lt;img src="index_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+---
+class:
+
+# Visualizar é comunicar
+
+## E agora?
+
+Pode até ser outra conclusão
+
+&lt;img src="index_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+---
+class:
+
+# Visualizar é comunicar
+
+## E agora?
+
+Ou outra...
+
+&lt;img src="index_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+---
+class:
+
+# Visualizar é comunicar
+
+## E para comunicação?
+
+Tudo com um só gráfico.
+
+&lt;img src="index_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+---
+class:
+
+# Visualizar é comunicar
+
+## O problema...
+
+É mais complicado
+
+
+```r
+rents %&gt;% group_by(city) %&gt;% summarize(rent_price=median(rent)) %&gt;% 
+  mutate(city=fct_reorder(city, -rent_price)) %&gt;% 
+  ggplot(aes(city, rent_price, fill=T)) + geom_col() +
+  theme_minimal() + theme(panel.grid.major.x = element_blank(),
+                          panel.grid.minor = element_blank()) +
+  guides(fill=F) + scale_fill_manual(values = "#88398a") +
+  geom_text(aes(label=scales::dollar(rent_price,
+                                     prefix = "R$ ",
+                                     big.mark = ".")), color="#88398a", vjust=-1) +
+  labs(x="", y="",
+       title="Mediana do preço do alguel em 5 cidades brasileiras",
+       subtitle="*mediana é o valor do meio de um conjunto de dados",
+       caption="Dados extraídos do QuintoAndar") + coord_cartesian(clip="off")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+---
+class:
+
+# Visualizar é comunicar
+
+## O problema...
+
+dado bruto
+
+
+```
+## # A tibble: 10,692 x 13
+##    city   area rooms bathroom parking_spaces floor animal furniture condo  rent
+##    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;
+##  1 São …    70     2        1              1     7 acept  furnished  2065  3300
+##  2 São …   320     4        4              0    20 acept  not furn…  1200  4960
+##  3 Port…    80     1        1              1     6 acept  not furn…  1000  2800
+##  4 Port…    51     2        1              0     2 acept  not furn…   270  1112
+##  5 São …    25     1        1              0     1 not a… not furn…     0   800
+##  6 São …   376     3        3              7    NA acept  not furn…     0  8000
+##  7 Rio …    72     2        1              0     7 acept  not furn…   740  1900
+##  8 São …   213     4        4              4     4 acept  not furn…  2254  3223
+##  9 São …   152     2        2              1     3 acept  furnished  1000 15000
+## 10 Rio …    35     1        1              0     2 acept  furnished   590  2300
+## # … with 10,682 more rows, and 3 more variables: tax &lt;dbl&gt;,
+## #   fire_insurance &lt;dbl&gt;, total &lt;dbl&gt;
+```
+---
+class:
+
+# Visualizar é comunicar
+
+## O problema...
+
+dado agregado
+
+
+```r
+rents %&gt;% group_by(city) %&gt;% summarize(rent_price=median(rent)) %&gt;% 
+  mutate(city=fct_reorder(city, -rent_price))
+```
+
+```
+## # A tibble: 5 x 2
+##   city           rent_price
+##   &lt;fct&gt;               &lt;dbl&gt;
+## 1 Belo Horizonte       2300
+## 2 Campinas             1500
+## 3 Porto Alegre         1650
+## 4 Rio de Janeiro       2300
+## 5 São Paulo            3400
+```
+---
+class:
+
+# Visualizar é explorar
+
+## Características da visualização para comunicação
+- Você já tirou conclusões sobre o conjunto de dados
+- Normalmente é feita em cima de dados agregados
+- Representa informações complicadas de forma simples *(e não simplista)*
+- Voltada para além de quem o criou
+- Público vai olhar para o gráfico por pouco tempo
+- Menos é mais
+- knowing the answer is not enough, you have to convince others
+- exemplo frederica fradapane
+
+normalmente gráficos de linha e barra, mas varia bastante
+---
+class:
+
+# Visualizar é explorar
+
+## Boas práticas
+- data to ink (Edward Tufte writes about this concept in his book The Visual Display of Quantitative Information)
+- gráfico certo
+- every plotting choice to one unique feature of your data (precisa significar algo)
+- cuidado com cores!!
+---
+class:
+
+# Visualizar é explorar
+
+mostrar 5 conceitos e exemplos
+---
+class:
+
+# comunicação/visualização
+
+falar de codificação e boas práticas
+
+- cores
+- tamanhos
+- gráficos
+---
+class:
+
+# do's and dont's 
+
+- exemplos
 ---
 class:    
 
@@ -224,32 +432,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
-(function() {
-  "use strict"
-  // Replace <script> tags in slides area to make them executable
-  var scripts = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container script'
-  );
-  if (!scripts.length) return;
-  for (var i = 0; i < scripts.length; i++) {
-    var s = document.createElement('script');
-    var code = document.createTextNode(scripts[i].textContent);
-    s.appendChild(code);
-    var scriptAttrs = scripts[i].attributes;
-    for (var j = 0; j < scriptAttrs.length; j++) {
-      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
-    }
-    scripts[i].parentElement.replaceChild(s, scripts[i]);
-  }
-})();
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
@@ -294,6 +476,17 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
 .forEach(el => {
   el.innerHTML += '<div class="logo"></div>';
 });
+</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
 </script>
 
 <script>
