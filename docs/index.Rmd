@@ -259,6 +259,10 @@ class:
 - Normalmente é feita em cima dos dados não agregados
 - Ajuda a entender conceitos estatísticos
 - Aparência e comunicação importam menos
+- A principal audiência é quem rodou o código
+- Explora o gráfico por um bom tempo
+
+normalmente histogramas e gráficos de dispersão
 ---
 class:
 
@@ -321,6 +325,28 @@ class:
 
 # Visualizar é explorar
 
+Aplicando cores...
+
+```{r fig.width=8, fig.height=5}
+rents %>% ggplot(aes(area, rent, color=furniture)) + geom_point() +
+  xlim(0, 1000) + ylim(0, 15000)
+```
+---
+class:
+
+# Visualizar é explorar
+
+E a cidade, influencia no preço do aluguel?
+
+```{r fig.width=8, fig.height=5}
+rents %>% ggplot(aes(area, rent, color=city)) + geom_point() +
+  xlim(0, 1000) + ylim(0, 15000)
+```
+---
+class:
+
+# Visualizar é explorar
+
 E a relação do alugel com o valor do condomínio?
 
 ```{r fig.width=8, fig.height=5}
@@ -343,7 +369,9 @@ class:
 
 # Visualizar é explorar
 
-Imagina falar que o valor médio dos condomínios é de <span style="color: red;">R$ 1.174</span>? O valor mediano, de <span style="color: blue;">R$ 560</span>, parece bem mais fiel à realidade, né?
+Imagina falar que o valor médio dos condomínios é de <span style="color: red;">R$ 1.174</span>?
+
+O valor mediano, de <span style="color: blue;">R$ 560</span>, parece bem mais fiel à realidade, né?
 
 ```{r fig.width=8, fig.height=4.5}
 rents %>% ggplot(aes(condo)) + xlim(0, 1500) + ylim(0, 1250) +
@@ -353,25 +381,178 @@ rents %>% ggplot(aes(condo)) + xlim(0, 1500) + ylim(0, 1250) +
 ---
 class:
 
-# Visualizar é explorar
+# Visualizar é comunicar
 
-Voltando à relação de aluguel com tamanho do imóvel, tem diferença se é mobiliado?
+## E para comunicação?
 
-```{r fig.width=8, fig.height=5}
-rents %>% ggplot(aes(area, rent, color=furniture)) + geom_point() +
+O que uma pessoa leiga concluiria desse gráfico?
+
+```{r echo=FALSE, fig.width=8, fig.height=5}
+rents %>% ggplot(aes(area, rent, color=city)) + geom_point() +
   xlim(0, 1000) + ylim(0, 15000)
+```
+---
+class:
+
+# Visualizar é comunicar
+
+## E agora?
+
+Concluir pela pessoa. / facilitar a conclusao
+
+```{r echo=FALSE, fig.width=6.5, fig.height=5.5}
+rents %>% group_by(city) %>% summarize(rent_price=median(rent)) %>% 
+  mutate(city=fct_reorder(city, -rent_price)) %>% 
+  ggplot(aes(city, rent_price, fill=T)) + geom_col() +
+  theme_minimal() + theme(panel.grid.major.x = element_blank(),
+                          panel.grid.minor = element_blank()) +
+  guides(fill=F) + scale_fill_manual(values = "#88398a") +
+  geom_text(aes(label=scales::dollar(rent_price,
+                                     prefix = "R$ ",
+                                     big.mark = ".")), color="#88398a", vjust=-1) +
+  labs(x="", y="",
+       title="Mediana do preço do alguel em 5 cidades brasileiras",
+       subtitle="*mediana é o valor do meio de um conjunto de dados",
+       caption="Dados extraídos do QuintoAndar") + coord_cartesian(clip="off")
+```
+---
+class:
+
+# Visualizar é comunicar
+
+## E agora?
+
+Pode até ser outra conclusão
+
+```{r echo=FALSE, fig.width=6.5, fig.height=5.5}
+rents %>% group_by(city) %>% summarize(area=median(area)) %>% 
+  mutate(city=fct_reorder(city, -area)) %>% 
+  ggplot(aes(city, area, fill=T)) + geom_col() +
+  theme_minimal() + theme(panel.grid.major.x = element_blank(),
+                          panel.grid.minor = element_blank()) +
+  guides(fill=F) + scale_fill_manual(values = "#88398a") +
+  geom_text(aes(label=paste0(area, " m²")), color="#88398a", vjust=-1) +
+  labs(x="", y="",
+       title="Área mediana de imóveis em 5 cidades brasileiras",
+       subtitle="*mediana é o valor do meio de um conjunto de dados",
+       caption="Dados extraídos do QuintoAndar") + coord_cartesian(clip="off")
+```
+---
+class:
+
+# Visualizar é comunicar
+
+## E agora?
+
+Ou outra...
+
+```{r echo=FALSE, fig.width=6.5, fig.height=5.5}
+rents %>% count(city) %>%  
+  mutate(city=fct_reorder(city, -n)) %>% 
+  ggplot(aes(city, n, fill=T)) + geom_col() +
+  theme_minimal() + theme(panel.grid.major.x = element_blank(),
+                          panel.grid.minor = element_blank()) +
+  guides(fill=F) + scale_fill_manual(values = "#88398a") +
+  geom_text(aes(label=scales::comma(n, big.mark = ".")), color="#88398a", vjust=-1) +
+  labs(x="", y="",
+       title="Número de móveis registrados no QuintoAndar",
+       subtitle="para cada cidade brasileira",
+       caption="Dados extraídos do QuintoAndar") + coord_cartesian(clip="off")
+```
+---
+class:
+
+# Visualizar é comunicar
+
+## E para comunicação?
+
+Tudo com um só gráfico.
+
+```{r echo=FALSE, fig.width=8, fig.height=5}
+rents %>% ggplot(aes(area, rent, color=city)) + geom_point() +
+  xlim(0, 1000) + ylim(0, 15000)
+```
+---
+class:
+
+# Visualizar é comunicar
+
+## O problema...
+
+É mais complicado
+
+```{r fig.width=6.5, fig.height=5.5}
+rents %>% group_by(city) %>% summarize(rent_price=median(rent)) %>% 
+  mutate(city=fct_reorder(city, -rent_price)) %>% 
+  ggplot(aes(city, rent_price, fill=T)) + geom_col() +
+  theme_minimal() + theme(panel.grid.major.x = element_blank(),
+                          panel.grid.minor = element_blank()) +
+  guides(fill=F) + scale_fill_manual(values = "#88398a") +
+  geom_text(aes(label=scales::dollar(rent_price,
+                                     prefix = "R$ ",
+                                     big.mark = ".")), color="#88398a", vjust=-1) +
+  labs(x="", y="",
+       title="Mediana do preço do alguel em 5 cidades brasileiras",
+       subtitle="*mediana é o valor do meio de um conjunto de dados",
+       caption="Dados extraídos do QuintoAndar") + coord_cartesian(clip="off")
+```
+---
+class:
+
+# Visualizar é comunicar
+
+## O problema...
+
+dado bruto
+
+```{r echo=FALSE}
+rents
+```
+---
+class:
+
+# Visualizar é comunicar
+
+## O problema...
+
+dado agregado
+
+```{r}
+rents %>% group_by(city) %>% summarize(rent_price=median(rent)) %>% 
+  mutate(city=fct_reorder(city, -rent_price))
 ```
 ---
 class:
 
 # Visualizar é explorar
 
-E a cidade, influencia no preço do aluguel?
+## Características da visualização para comunicação
+- Você já tirou conclusões sobre o conjunto de dados
+- Normalmente é feita em cima de dados agregados
+- Representa informações complicadas de forma simples *(e não simplista)*
+- Voltada para além de quem o criou
+- Público vai olhar para o gráfico por pouco tempo
+- Menos é mais
+- knowing the answer is not enough, you have to convince others
+- exemplo frederica fradapane
 
-```{r fig.width=8, fig.height=5}
-rents %>% ggplot(aes(area, rent, color=city)) + geom_point() +
-  xlim(0, 1000) + ylim(0, 15000)
-```
+normalmente gráficos de linha e barra, mas varia bastante
+---
+class:
+
+# Visualizar é explorar
+
+## Boas práticas
+- data to ink (Edward Tufte writes about this concept in his book The Visual Display of Quantitative Information)
+- gráfico certo
+- every plotting choice to one unique feature of your data (precisa significar algo)
+- cuidado com cores!!
+---
+class:
+
+# Visualizar é explorar
+
+mostrar 5 conceitos e exemplos
 ---
 class:
 
