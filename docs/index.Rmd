@@ -82,7 +82,6 @@ knitr::include_graphics(c("img/horst/ggplot2_exploracao_pt.png", "img/horst/ggpl
 
 
 
-
 ---
 class:   
 
