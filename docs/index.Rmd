@@ -51,6 +51,16 @@ library(tidyverse)
 knitr::include_graphics("img/rlogos/rstudio-r.jpg")
 ```
 
+- Instale o R [fazendo o download aqui](https://cran.r-project.org/) e o RStudio [aqui](https://rstudio.com/products/rstudio/download/#download).
+
+
+## Pacote ggplot2 e tidyverse instalados
+
+```{r eval=FALSE, include=TRUE}
+install.packages("tidyverse") # Para instalar 
+
+library(tidyverse) # Para carregar a biblioteca
+```
 
 ---
 class:
@@ -59,11 +69,18 @@ class:
 
 - Apresentação do RStudio 
 
-- Intrudoução ao pacote ggplot2
+- Apresentação do pacote `ggplot2`
 
-- Visualizar para explorar
+- Usando o `ggplot2` para visualizar e explorar os dados
 
-- Visualizar e comunicar
+- Usando o `ggplot2` para criar visualizações de dados para comunicar
+
+```{r echo=FALSE, , fig.cap="Art by <a href='https://github.com/allisonhorst/stats-illustrations'>Allison Horst</a>", out.width="40%", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("img/horst/ggplot2_exploracao_pt.png", "img/horst/ggplot2_obra_prima_pt.png"))
+
+```
+
+
 
 ---
 class:   
@@ -184,10 +201,131 @@ class:
 
 # Vamos começar?
 
-- instalar R e RStudio
-- instalar o ggplot2 (e tidyverse)
-- explicar como o ggplo2 funciona
-- exemplos ggplo2
+<!-- - instalar R e RStudio -->
+<!-- - instalar o ggplot2 (e tidyverse) -->
+<!-- - explicar como o ggplot2 funciona -->
+<!-- - exemplos ggplot2 -->
+
+
+
+---
+class:    
+
+
+# RStudio
+
+**RStudio** é o IDE (integrated development environment) da Linguagem R, ou seja, o ambiente que utilizamos para editar e executar os códigos em R. Tem quatro áreas, conforme a figura abaixo:
+
+```{r echo=FALSE, out.width="80%"}
+knitr::include_graphics("img/intro-rstudio/RStudio_screen.png")
+```
+Fonte: [Curso Introdução ao `R` - Fatec](https://github.com/MaryMS/2018-11-R-Course-FatecZS)
+
+
+
+---
+class:    
+
+
+# RStudio
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("img/intro-rstudio/01-rstudio.png")
+```
+Fonte: [SW Carpentry](http://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/index.html)
+
+---
+class:    
+
+
+# RStudio
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("img/intro-rstudio/01-rstudio-script.png")
+```
+Fonte: [SW Carpentry](http://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/index.html)
+
+
+---
+class:    
+
+
+# RStudio
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("img/intro-rstudio/haydee1.jpg")
+```
+Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
+
+---
+class:    
+
+
+# RStudio
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("img/intro-rstudio/haydee2.jpg")
+```
+Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
+
+---
+class:    
+
+
+# RStudio
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("img/intro-rstudio/haydee3.jpg")
+```
+Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
+
+---
+class:    
+
+
+# RStudio
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("img/intro-rstudio/haydee4.jpg")
+```
+Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
+
+---
+class:    
+
+
+# RStudio
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("img/intro-rstudio/haydee5.jpg")
+```
+Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
+
+---
+class:    
+
+# RStudio
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("img/intro-rstudio/haydee6.jpg")
+```
+Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
+
+---
+class:    
+
+
+# RStudio
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("img/intro-rstudio/haydee7.jpg")
+```
+Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
+
+---
+class:    
+
+# RStudio
+  
+
+
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("img/intro-rstudio/haydee8.jpg")
+```
+Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
+
+
 ---
 class:
 
