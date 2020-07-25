@@ -40,6 +40,7 @@ options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(fig.align = "center", message=FALSE, warning=FALSE)
 
 library(tidyverse)
+library(dados)
 
 ```
 
@@ -53,10 +54,6 @@ knitr::include_graphics("img/rlogos/rstudio-r.jpg")
 
 - Instale o R [fazendo o download aqui](https://cran.r-project.org/) e o RStudio [aqui](https://rstudio.com/products/rstudio/download/#download).
 
----
-class:
-
-# Pré-requisitos
 
 ## Pacote ggplot2 e tidyverse instalados
 
@@ -66,12 +63,46 @@ install.packages("tidyverse") # Para instalar
 library(tidyverse) # Para carregar a biblioteca
 ```
 
+---
+class:
 
-## Pacote `dados`
-- Se quiser reproduzir os exercícios com as bases de dados traduzidas para o português, é possível através da instalação do pacote `dados` (atualmente em desenvolvimento):
+# Pacote **dados**
 
-```{r}
-# remotes::install_github("cienciadedatos/dados")
+
+.pull-left[
+- [https://github.com/cienciadedatos/dados](https://github.com/cienciadedatos/dados)
+
+- Objetivo: Disponibilizar diversas bases de dados traduzidas para o português
+
+- Pacote em desenvolvimento, tradução realizada por R-Ladies do Brasil e Chile
+
+- Se quiser reproduzir os exercícios com as bases de dados traduzidas para o português, é possível através da instalação do pacote `dados`:
+
+
+
+
+]
+
+.pull-right[
+
+<!-- Atualizar antes do evento -->
+
+__Desenvolvimento:__ 
+(atualizado em 25/07/2020)
+
+Primeira tradução: `r round(17/31*100, 2)`%
+
+Revisadas: `r round(1/31*100, 2)`%
+
+Disponível para uso: `r round(1/31*100, 2)`%
+
+```{r echo=FALSE, out.width="30%"}
+knitr::include_graphics("img/rlogos/hex-dados.png")
+```
+]
+
+```{r eval=FALSE, include=TRUE}
+remotes::install_github("cienciadedatos/dados")
 library(dados)
 ```
 
@@ -80,7 +111,6 @@ class:
 
 # Programação
 
-- Apresentação do RStudio 
 
 - Apresentação do pacote `ggplot2`
 
@@ -217,132 +247,10 @@ class: center, middle, inverse
 
 # Vamos começar?
 
-<!-- - instalar R e RStudio -->
 <!-- - instalar o ggplot2 (e tidyverse) -->
 <!-- - explicar como o ggplot2 funciona -->
 <!-- - exemplos ggplot2 -->
 
----
-class: center, middle, inverse
-
-# RStudio
-
----
-class:    
-
-
-# RStudio
-
-**RStudio** é o IDE (integrated development environment) da Linguagem R, ou seja, o ambiente que utilizamos para editar e executar os códigos em R. Tem quatro áreas, conforme a figura abaixo:
-
-```{r echo=FALSE, out.width="80%"}
-knitr::include_graphics("img/intro-rstudio/RStudio_screen.png")
-```
-Fonte: [Curso Introdução ao `R` - Fatec](https://github.com/MaryMS/2018-11-R-Course-FatecZS)
-
-
-
----
-class:    
-
-
-# RStudio
-```{r echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/intro-rstudio/01-rstudio.png")
-```
-Fonte: [SW Carpentry](http://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/index.html)
-
----
-class:    
-
-
-# RStudio
-```{r echo=FALSE, out.width="100%"}
-knitr::include_graphics("img/intro-rstudio/01-rstudio-script.png")
-```
-Fonte: [SW Carpentry](http://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro/index.html)
-
-
----
-class:    
-
-
-# RStudio
-```{r echo=FALSE, out.width="90%"}
-knitr::include_graphics("img/intro-rstudio/haydee1.jpg")
-```
-Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
-
----
-class:    
-
-
-# RStudio
-```{r echo=FALSE, out.width="90%"}
-knitr::include_graphics("img/intro-rstudio/haydee2.jpg")
-```
-Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
-
----
-class:    
-
-
-# RStudio
-```{r echo=FALSE, out.width="90%"}
-knitr::include_graphics("img/intro-rstudio/haydee3.jpg")
-```
-Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
-
----
-class:    
-
-
-# RStudio
-```{r echo=FALSE, out.width="90%"}
-knitr::include_graphics("img/intro-rstudio/haydee4.jpg")
-```
-Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
-
----
-class:    
-
-
-# RStudio
-```{r echo=FALSE, out.width="90%"}
-knitr::include_graphics("img/intro-rstudio/haydee5.jpg")
-```
-Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
-
----
-class:    
-
-# RStudio
-```{r echo=FALSE, out.width="90%"}
-knitr::include_graphics("img/intro-rstudio/haydee6.jpg")
-```
-Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
-
----
-class:    
-
-
-# RStudio
-```{r echo=FALSE, out.width="90%"}
-knitr::include_graphics("img/intro-rstudio/haydee7.jpg")
-```
-Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
-
----
-class:    
-
-# RStudio
-  
-
-
-```{r echo=FALSE, out.width="90%"}
-knitr::include_graphics("img/intro-rstudio/haydee8.jpg")
-```
-Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
 
 ---
 class: center, middle, inverse
@@ -388,7 +296,7 @@ class:
 
 # Sintaxe 
 
-- Um gráfico feito com ggplot2 é uma combinação de **camadas**.
+- Um gráfico feito com ggplot2 é uma soma de **camadas**. Utilizamos o símbolo **`+`** para somar as camadas.
 
 - Apresentaremos os compontentes de um ggplot usando como referencia o livro [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/introduction.html), do Hadley Wickham.
 
@@ -895,11 +803,12 @@ class:
 # do's and dont's 
 
 - exemplos
+
+
 ---
 class:    
 
-
-# Referências
+# Referências e Dicas
 
 
 - [Workshop Code Your Graph](https://alison.rbind.io/html/jamboree_heart_ggplot.html)
