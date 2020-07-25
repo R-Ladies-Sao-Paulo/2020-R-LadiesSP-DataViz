@@ -7,7 +7,7 @@ output:
   xaringan::moon_reader:
     lib_dir: libs
     chakra: libs/remark-latest.min.js
-    css: [default, "css/metropolis.css", "css/metropolis-fonts.css", "css/footer.css"]
+    css: [default, "css/metropolis.css", "css/metropolis-fonts.css", "css/footer.css", "css/custom.css"]
     includes:
       after_body: html/insert-logo.html
     nature:
@@ -53,6 +53,10 @@ knitr::include_graphics("img/rlogos/rstudio-r.jpg")
 
 - Instale o R [fazendo o download aqui](https://cran.r-project.org/) e o RStudio [aqui](https://rstudio.com/products/rstudio/download/#download).
 
+---
+class:
+
+# Pré-requisitos
 
 ## Pacote ggplot2 e tidyverse instalados
 
@@ -60,6 +64,15 @@ knitr::include_graphics("img/rlogos/rstudio-r.jpg")
 install.packages("tidyverse") # Para instalar 
 
 library(tidyverse) # Para carregar a biblioteca
+```
+
+
+## Pacote `dados`
+- Se quiser reproduzir os exercícios com as bases de dados traduzidas para o português, é possível através da instalação do pacote `dados` (atualmente em desenvolvimento):
+
+```{r}
+# remotes::install_github("cienciadedatos/dados")
+library(dados)
 ```
 
 ---
@@ -80,7 +93,10 @@ knitr::include_graphics(c("img/horst/ggplot2_exploracao_pt.png", "img/horst/ggpl
 
 ```
 
+---
+class: center, middle, inverse
 
+# R-Ladies
 
 ---
 class:   
@@ -197,7 +213,7 @@ rladies %>%
 
 
 ---
-class:
+class: center, middle, inverse
 
 # Vamos começar?
 
@@ -206,7 +222,10 @@ class:
 <!-- - explicar como o ggplot2 funciona -->
 <!-- - exemplos ggplot2 -->
 
+---
+class: center, middle, inverse
 
+# RStudio
 
 ---
 class:    
@@ -325,6 +344,173 @@ knitr::include_graphics("img/intro-rstudio/haydee8.jpg")
 ```
 Fonte: [Haydee Svab](https://www.slideshare.net/mobile/haydeesvab/anlise-crtica-de-dados-primeiros-passos-com-r)
 
+---
+class: center, middle, inverse
+
+# Introdução ao ggplot2 
+
+---
+class: 
+
+# O que é o ggplot2?
+
+- É um pacote usado para visualização de dados, mantido pela [RStudio](https://rstudio.com/).
+
+
+- É uma implementação dos conceitos e definições sobre o que é um gráfico oriundos do livro _Grammar of Graphics_ de Leland Wilkinson. 
+
+- O ggplot2 é poderoso, pois não é limitado a um grupo de gráficos pré-determinados. Você pode criar gráficos específicos para atender a sua necessidade ([Wickham](https://ggplot2-book.org/introduction.html)).
+
+- [Cheatsheet em português](https://www.rstudio.com/wp-content/uploads/2016/03/ggplot2-cheatsheet-portuguese.pdf)
+
+
+
+.pull-left[
+- Para começar a usar o pacote, precisa carregá-lo:
+
+```{r}
+library(ggplot2)
+# ou 
+library(tidyverse)
+```
+
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("img/rlogos/hex-ggplot2.png")
+```
+]
+
+
+---
+class: 
+
+# Sintaxe 
+
+- Um gráfico feito com ggplot2 é uma combinação de **camadas**.
+
+- Apresentaremos os compontentes de um ggplot usando como referencia o livro [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/introduction.html), do Hadley Wickham.
+
+- Não precisa utilizar todos os componentes seguintes em seu gráfico, mas é interessante saber que existem.
+
+- A função `ggplot()` inicia um gráfico ggplot:
+
+
+.left-code[
+
+```{r plot-ggplot-vazio, echo=TRUE, fig.show="hide", collapse=T, out.width="90%"}
+ ggplot()
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-ggplot-vazio", "png")`)
+]
+
+
+---
+class: 
+
+# Os gráficos são compostos por...
+
+## dados:
+
+- Muitas vezes precisamos organizar os dados antes de utilizar o ggplot. Para isso usamos muito os pacotes `dplyr` e `tidyr`.
+
+- Nos próximos exemplos, utilizaremos a base `diamante` do pacote `dados`:
+
+```{r}
+knitr::kable(head(dados::diamante, 5))
+```
+
+
+
+---
+class: 
+
+# Os gráficos são compostos por...
+
+## dados (data):
+
+.left-code[
+
+```{r plot-ggplot-dados, echo=TRUE, fig.show="hide", collapse=T, out.width="80%"}
+ ggplot(data = diamante)
+  
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-ggplot-dados", "png")`)
+]
+
+---
+class: 
+
+# Os gráficos são compostos por...
+
+## Geometrias (layers - geoms) 
+
+
+
+.left-code[
+
+```{r plot-ggplot-geoms, echo=TRUE, fig.show="hide", collapse=T, out.width="80%"}
+ggplot(data = diamante) +
+  geom_col(aes(x = corte, y = preco))
+
+```
+]
+
+.right-plot[
+![](`r knitr::fig_chunk("plot-ggplot-geoms", "png")`)
+]
+
+---
+class: 
+
+# Os gráficos são compostos por...
+
+## Transformações estatísticas (layers - stats)
+
+---
+class: 
+
+# Os gráficos são compostos por...
+
+## Escalas (scales):
+
+
+
+---
+class: 
+
+# Os gráficos são compostos por...
+
+## Sistemas de coordenadas (coord):
+
+
+---
+class: 
+
+# Os gráficos são compostos por...
+
+## Facetas (facets):
+
+
+---
+class: 
+
+# Os gráficos são compostos por...
+
+## Temas (themes):
+
+---
+class: center, middle, inverse
+
+# Visualização de dados
 
 ---
 class:
@@ -715,7 +901,10 @@ class:
 
 # Referências
 
-- 
+
+- [Workshop Code Your Graph](https://alison.rbind.io/html/jamboree_heart_ggplot.html)
+
+- [R for Data Science - capítulos 3 e 28](https://r4ds.had.co.nz/data-visualisation.html)
 
 
 ---
@@ -729,10 +918,11 @@ class:
   - MeetUp: [https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo)
   - Github: [https://github.com/rladies/meetup-presentations_sao-paulo](https://github.com/rladies/meetup-presentations_sao-paulo)
   - R-Ladies LATAM Blog (Latin America) - Em breve!
+  - **[Capítulos da R-Ladies no Brasil, e eventos online](https://github.com/R-Ladies-Sao-Paulo/RLadies-Brasil)**
 ### Não tem capítulo na sua cidade e quer iniciar um?
 <center> Saiba como em <a href="https://rladies.org/about-us/help/"> R-Ladies - How do get involved </a> </center>
 
 
 
 
-- Apresentação feita com [Xaringan](https://github.com/yihui/xaringan), com o tema `metropolis` modificado por [Bea Milz](https://beatrizmilz.com).
+- Apresentação feita com o pacote [xaringan](https://github.com/yihui/xaringan), e o tema `metropolis` modificado por [Bea Milz](https://beatrizmilz.com).
