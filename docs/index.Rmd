@@ -416,6 +416,10 @@ class:
 ## Temas (themes):
 
 ---
+class:
+
+# Tipos de gráficos 
+---
 class: center, middle, inverse
 
 # Visualização de dados
